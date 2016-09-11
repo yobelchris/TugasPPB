@@ -34,25 +34,27 @@
             android:src="@drawable/ic_logo" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editTextNama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" />
+            android:layout_alignParentTop="true"
+            android:inputType="text" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/editTextTahun"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/editText"
-            android:layout_marginTop="35dp" />
+            android:layout_below="@+id/editTextNama"
+            android:layout_marginTop="35dp"
+            android:inputType="numberSigned" />
 
         <TextView
             android:id="@+id/textView"
@@ -61,30 +63,16 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/editText2"
+            android:layout_below="@+id/editTextTahun"
             android:layout_marginTop="35dp"
             android:text="Platform"
             android:textSize="20dp" />
 
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <RadioButton
-                android:id="@+id/radioButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="PC" />
-
-            <RadioButton
-                android:id="@+id/radioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="Console" />
-
-        </RadioGroup>
+        <Spinner
+            android:id="@+id/spinnerPM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/game" />
 
         <TextView
             android:id="@+id/textView2"
@@ -96,7 +84,7 @@
             android:textSize="20dp" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spinnerGame"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -110,21 +98,21 @@
             android:textSize="20dp" />
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/checkBoxSP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
             android:text="Season Pass" />
 
         <CheckBox
-            android:id="@+id/checkBox2"
+            android:id="@+id/checkBoxCD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
             android:text="Costume DLC&apos;s" />
 
         <CheckBox
-            android:id="@+id/checkBox3"
+            android:id="@+id/checkBoxMD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
@@ -140,43 +128,53 @@
             android:textSize="20dp" />
 
         <RadioGroup
+            android:id="@+id/pengiriman"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></RadioGroup>
+            android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="JNE" />
+            <RadioButton
+                android:id="@+id/radioButtonJ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="JNE" />
 
-        <RadioButton
-            android:id="@+id/radioButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="TIKI" />
+            <RadioButton
+                android:id="@+id/radioButtonT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="TIKI" />
 
-        <RadioButton
-            android:id="@+id/radioButton5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="Pos Indonesia" />
+            <RadioButton
+                android:id="@+id/radioButtonPI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Pos Indonesia" />
+        </RadioGroup>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonOK"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="OK" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/textViewHasil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
             android:textSize="20dp"
             tools:text="Hasil" />
+
+        <Button
+            android:id="@+id/buttonCon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:text="Confirm"
+            android:visibility="gone" />
 
     </LinearLayout>
 </ScrollView>
