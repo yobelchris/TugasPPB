@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     RadioGroup kirim;
     TextView tvHasil;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,50 +75,81 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void klik() {
-        String nama = etNama.getText().toString();
-        int tahun = Integer.parseInt(etTahun.getText().toString());
-        int umur = 2016 - tahun;
-        int biaya = 0;
-        String Pengiriman = null;
-        String game = spGame.getSelectedItem().toString();
-        if (game == "No Man's Sky") {
-            biaya = 550000;
-        } else if (game == "Dying Light") {
-            biaya = 850000;
-        } else if (game == "COD : Ghost") {
-            biaya = 400000;
-        } else if (game == "GTA V") {
-            biaya = 650000;
-        } else if (game == "Infamous Second Son") {
-            biaya = 500000;
-        } else if (game == "Watch Dogs") {
-            biaya = 300000;
-        }
-        String extra = "\nExtras :";
-        if (cbSP.isChecked()) {
-            extra += "\n" + cbSP.getText();
-            biaya += 200000;
-        }
-        if (cbMD.isChecked()) {
-            extra += "\n" + cbMD.getText();
-            biaya += 50000;
-        }
-        if (cbCD.isChecked()) {
-            extra += "\n" + cbCD.getText();
-            biaya += 100000;
-        }
-        if (kirim.getCheckedRadioButtonId() != -1) {
-            RadioButton rb = (RadioButton) findViewById(kirim.getCheckedRadioButtonId());
-            Pengiriman = rb.getText().toString();
-            biaya += 20000;
+        if (isValid()) {
+            String nama = etNama.getText().toString();
+            int tahun = Integer.parseInt(etTahun.getText().toString());
+            int umur = 2016 - tahun;
+            int biaya = 0;
+            String Pengiriman = null;
+            String game = spGame.getSelectedItem().toString();
+            if (game == "No Man's Sky") {
+                biaya = 550000;
+            } else if (game == "Dying Light") {
+                biaya = 850000;
+            } else if (game == "COD : Ghost") {
+                biaya = 400000;
+            } else if (game == "GTA V") {
+                biaya = 650000;
+            } else if (game == "Infamous Second Son") {
+                biaya = 500000;
+            } else if (game == "Watch Dogs") {
+                biaya = 300000;
+            }
+            String extra = "\nExtras :";
+            if (cbSP.isChecked()) {
+                extra += "\n" + cbSP.getText();
+                biaya += 200000;
+            }
+            if (cbMD.isChecked()) {
+                extra += "\n" + cbMD.getText();
+                biaya += 50000;
+            }
+            if (cbCD.isChecked()) {
+                extra += "\n" + cbCD.getText();
+                biaya += 100000;
+            }
+            if (kirim.getCheckedRadioButtonId() != -1) {
+                RadioButton rb = (RadioButton) findViewById(kirim.getCheckedRadioButtonId());
+                Pengiriman = rb.getText().toString();
+                biaya += 20000;
+            }
+
+            tvHasil.setText("Nama    :" + nama +
+                    "\nUmur     :" + umur +
+                    "\nGame    :" + game +
+                    extra +
+                    "\nPengiriman :" + Pengiriman +
+                    "\nBiaya          :" + biaya);
+            findViewById(R.id.buttonCon).setVisibility(View.VISIBLE);
         }
 
-        tvHasil.setText("Nama    :" + nama +
-                "\nUmur     :" + umur +
-                "\nGame    :" + game +
-                extra +
-                "\nPengiriman :" + Pengiriman +
-                "\nBiaya          :" + biaya);
-        findViewById(R.id.buttonCon).setVisibility(View.VISIBLE);
+
+    }
+
+    private boolean isValid() {
+        boolean valid = true;
+        String nama = etNama.getText().toString();
+        String tahun = etTahun.getText().toString();
+        TextView Extra = (TextView) findViewById(R.id.textViewExtra);
+        TextView Kirim = (TextView) findViewById(R.id.textViewKirim);
+        if (nama.isEmpty()) {
+            etNama.setError("Nama Belum diisi");
+            valid = false;
+        }
+        if (tahun.isEmpty() || tahun.length() != 4) {
+            etTahun.setError("Format Pengisian Belum Sesuai");
+            valid = false;
+        }
+        if (cbMD.isChecked() || cbSP.isChecked() || cbCD.isChecked()) {
+            valid = true;
+        } else {
+            Extra.setError("Belum Memilih");
+            valid = false;
+        }
+        if (kirim.getCheckedRadioButtonId() <= 0) {
+            Kirim.setError("Belum Memilih");
+            valid = false;
+        }
+        return valid;
     }
 }
