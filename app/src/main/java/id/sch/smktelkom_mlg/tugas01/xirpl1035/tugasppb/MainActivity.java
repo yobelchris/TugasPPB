@@ -118,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
                     "\nUmur     :" + umur +
                     "\nGame    :" + game +
                     extra +
-                    "\nPengiriman :" + Pengiriman +
-                    "\nBiaya          :" + biaya);
+                    "\n\nPengiriman :" + Pengiriman +
+                    "\nBiaya           :" + "Rp" + biaya + ",00");
             findViewById(R.id.buttonCon).setVisibility(View.VISIBLE);
         }
 
