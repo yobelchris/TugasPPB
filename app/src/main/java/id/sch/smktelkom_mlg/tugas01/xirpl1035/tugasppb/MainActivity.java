@@ -135,13 +135,18 @@ public class MainActivity extends AppCompatActivity {
         if (nama.isEmpty()) {
             etNama.setError("Nama Belum diisi");
             valid = false;
+        } else {
+            etNama.setError(null);
         }
         if (tahun.isEmpty() || tahun.length() != 4) {
             etTahun.setError("Format Pengisian Belum Sesuai");
             valid = false;
+        } else {
+            etTahun.setError(null);
         }
         if (cbMD.isChecked() || cbSP.isChecked() || cbCD.isChecked()) {
             valid = true;
+            Extra.setError(null);
         } else {
             Extra.setError("Belum Memilih");
             valid = false;
@@ -149,6 +154,8 @@ public class MainActivity extends AppCompatActivity {
         if (kirim.getCheckedRadioButtonId() <= 0) {
             Kirim.setError("Belum Memilih");
             valid = false;
+        } else {
+            Kirim.setError(null);
         }
         return valid;
     }
